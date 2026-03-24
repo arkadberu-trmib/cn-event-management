@@ -9,9 +9,9 @@ import { Contact } from './components/Contact';
 
 function App() {
   return (
-    <div className="font-body text-white relative h-screen overflow-y-auto overflow-x-hidden">
+    <div className="font-body text-white relative">
       {/* Global Fixed Video Background */}
-      <div className="fixed inset-0 z-[-10]">
+      <div className="fixed inset-0 z-[-10] min-h-screen min-h-[100dvh]">
         <video
           autoPlay
           loop

@@ -2,7 +2,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export function Navbar() {
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 px-8 lg:px-16 flex items-center justify-between pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-8 lg:px-16 pt-12 pb-4 flex items-center justify-between pointer-events-none">
       {/* Left: Logo */}
       <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white/10 backdrop-blur-md text-white font-heading italic text-2xl pointer-events-auto cursor-pointer">
         C&N

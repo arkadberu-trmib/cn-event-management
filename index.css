@@ -10,10 +10,8 @@
   }
 
   body {
-    @apply bg-contentBg text-text font-body m-0 p-0 antialiased overflow-hidden;
-    height: 100vh;
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: touch;
+    @apply bg-contentBg text-text font-body m-0 p-0 antialiased;
+    overscroll-behavior-y: contain;
   }
 }
 
