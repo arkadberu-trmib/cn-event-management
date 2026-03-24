@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Play } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { BlurText } from './BlurText';
 
 export function Hero() {
@@ -44,18 +44,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center gap-6"
+          className="flex items-center gap-6"
         >
-          <a href="#services" className="w-full sm:w-auto liquid-glass-strong rounded-full px-8 py-3.5 flex items-center justify-center gap-2 text-white font-medium hover:bg-white/20 transition-colors">
+          <a href="#services" className="liquid-glass-strong rounded-full px-8 py-3.5 flex items-center justify-center gap-2 text-white font-medium hover:bg-white/20 transition-colors">
             Our Services
             <ArrowUpRight className="w-5 h-5" />
           </a>
-          <button className="w-full sm:w-auto flex items-center justify-center gap-2 font-medium text-white hover:text-white/80 transition-colors">
-            <span className="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-              <Play className="w-4 h-4 ml-0.5 fill-current" />
-            </span>
-            Watch Our Story
-          </button>
         </motion.div>
 
       </div>
