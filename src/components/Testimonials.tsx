@@ -143,7 +143,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.15, duration: 0.6 }}
-            className="relative liquid-glass p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20"
+            className="relative rounded-2xl border border-white/20 bg-[#314b5f]/45 p-10 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-[#314b5f]/55 hover:shadow-2xl"
           >
             <div className="absolute -top-4 -left-2 text-white/20 text-6xl font-heading leading-none font-serif">"</div>
             <p className="text-white/90 text-lg leading-relaxed relative z-10 mb-8 italic drop-shadow-sm">
@@ -194,7 +194,7 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed left-4 right-4 top-1/2 z-50 max-h-[calc(100vh-4rem)] -translate-y-1/2 overflow-y-auto rounded-2xl border border-white/20 bg-slate-950 p-6 shadow-2xl md:left-1/2 md:right-auto md:w-full md:max-w-xl md:-translate-x-1/2"
+              className="fixed left-4 right-4 top-6 z-50 max-h-[calc(100vh-3rem)] overflow-y-auto rounded-2xl border border-white/20 bg-[#314b5f]/95 p-6 shadow-2xl backdrop-blur-xl md:left-1/2 md:right-auto md:top-1/2 md:w-full md:max-w-xl md:-translate-x-1/2 md:-translate-y-1/2"
             >
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
