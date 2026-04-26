@@ -116,14 +116,17 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-24 px-6 lg:px-16 container mx-auto relative overflow-hidden">
       <div className="text-center mb-16 relative z-10">
-        <motion.h2 
+        <motion.button
+          type="button"
+          onClick={() => setIsOpen(true)}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl md:text-5xl font-heading italic text-white mb-4 drop-shadow-md"
+          className="liquid-glass mb-5 inline-flex items-center justify-center gap-3 rounded-full border border-white/25 px-7 py-3 text-4xl font-heading italic text-white shadow-lg transition-colors hover:bg-white/15 md:text-5xl"
         >
-          Love Notes
-        </motion.h2>
+          Leave a Love Note
+          <Send className="h-5 w-5 md:h-6 md:w-6" />
+        </motion.button>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -133,18 +136,6 @@ export function Testimonials() {
         >
           Stories from the couples and families we've had the honor to celebrate with.
         </motion.p>
-        <motion.button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.2 }}
-          className="mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-medium text-white backdrop-blur-md transition-colors hover:bg-white/20"
-        >
-          Leave a Testimonial
-          <Send className="h-4 w-4" />
-        </motion.button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
