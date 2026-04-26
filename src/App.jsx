@@ -8,6 +8,10 @@ import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 
 function App() {
+  const contactEmail = 'eventmanagement.cn@gmail.com';
+  const instagramUrl = 'https://www.instagram.com/eventmanagement.cn?igsh=Z3d3djlocGthNTI5';
+  const facebookUrl = 'https://www.facebook.com/share/1CppSJWD8E/?mibextid=wwXIfr';
+
   return (
     <div className="font-body text-white relative min-h-screen overflow-x-hidden">
       {/* Global Fixed Video Background */}
@@ -36,16 +40,16 @@ function App() {
       <footer className="bg-black/30 backdrop-blur-lg py-16 border-t border-white/10 mt-12">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-heading italic text-3xl lg:text-4xl text-white mb-4">C&N Event Management</h2>
-          <p className="text-white/80 mb-3">Turning Your Moments Into Memories</p>
+          <p className="text-white/80 mb-3">Beautiful Events, Effortlessly Planned</p>
           <a
-            href="mailto:eventmanagement.cn@gmail.com"
+            href={`mailto:${contactEmail}`}
             className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm mb-8"
           >
-            eventmanagement.cn@gmail.com
+            {contactEmail}
           </a>
           <div className="flex justify-center space-x-8 text-sm text-white/70 mb-12 mt-6">
-            <a href="#" className="hover:text-white transition-colors">Instagram</a>
-            <a href="#" className="hover:text-white transition-colors">Pinterest</a>
+            <a href={instagramUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <a href={facebookUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>
             <a href="#quote" className="hover:text-white transition-colors">Get a Quote</a>
           </div>
           <p className="text-xs text-white/40">© 2026 C&N Event Management. All rights reserved.</p>

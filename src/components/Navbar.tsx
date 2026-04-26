@@ -53,35 +53,46 @@ export function Navbar() {
       {/* Mobile Dropdown */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-20 left-4 right-4 z-40 liquid-glass rounded-2xl p-6 border border-white/20 md:hidden"
-          >
-            <ul className="space-y-4 mb-6">
-              {navItems.map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    onClick={() => setIsOpen(false)}
-                    className="block text-white/80 hover:text-white font-medium text-lg transition-colors"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#quote"
+          <>
+            <motion.button
+              aria-label="Close menu"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-1 w-full bg-primary text-white rounded-full px-4 py-3 text-sm font-medium hover:bg-primary/90 transition-colors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.16 }}
+              className="fixed inset-0 z-30 bg-black/35 md:hidden"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.16, ease: "easeOut" }}
+              className="fixed top-20 left-4 right-4 z-40 rounded-2xl border border-white/15 bg-slate-950 p-5 shadow-2xl md:hidden"
             >
-              Get a Quote
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </motion.div>
+              <ul className="mb-5 divide-y divide-white/10">
+                {navItems.map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item.toLowerCase()}`}
+                      onClick={() => setIsOpen(false)}
+                      className="block py-3 text-base font-semibold text-white transition-colors hover:text-white/80"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#quote"
+                onClick={() => setIsOpen(false)}
+                className="flex w-full items-center justify-center gap-1 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-colors hover:bg-primary/90"
+              >
+                Get a Quote
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

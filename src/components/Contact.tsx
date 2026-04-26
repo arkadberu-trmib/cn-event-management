@@ -6,11 +6,21 @@ import emailjs from '@emailjs/browser';
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const TO_EMAIL = 'eventmanagement.cn@gmail.com';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
+const isEmailJsConfigured =
+  SERVICE_ID &&
+  TEMPLATE_ID &&
+  PUBLIC_KEY &&
+  SERVICE_ID !== 'your_service_id' &&
+  TEMPLATE_ID !== 'your_template_id' &&
+  PUBLIC_KEY !== 'your_public_key';
+
 export function Contact() {
   const [formState, setFormState] = useState<FormState>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -26,23 +36,49 @@ export function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setFormState('loading');
+    setErrorMessage('');
+    const eventDate = form.date || 'Not specified';
+    const fullMessage = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Event Type: ${form.type}`,
+      `Estimated Date: ${eventDate}`,
+      '',
+      'Event Details:',
+      form.message,
+    ].join('\n');
 
     try {
+      if (!isEmailJsConfigured) {
+        throw new Error('Email service is not configured yet.');
+      }
+
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         {
+          to_email: TO_EMAIL,
           from_name: form.name,
           from_email: form.email,
+          reply_to: form.email,
           event_type: form.type,
-          event_date: form.date || 'Not specified',
-          message: form.message,
+          event_date: eventDate,
+          subject: `New ${form.type} inquiry from ${form.name}`,
+          message: fullMessage,
         },
-        PUBLIC_KEY
+        { publicKey: PUBLIC_KEY }
       );
       setFormState('success');
       setForm({ name: '', email: '', type: 'wedding', date: '', message: '' });
-    } catch {
+    } catch (error) {
+      const statusText =
+        error && typeof error === 'object' && 'text' in error
+          ? String(error.text)
+          : error instanceof Error
+            ? error.message
+            : '';
+
+      setErrorMessage(statusText || `Please email us directly at ${TO_EMAIL}.`);
       setFormState('error');
     }
   };
@@ -181,10 +217,12 @@ export function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-center gap-2 text-red-400 text-sm"
+                className="flex items-start gap-2 rounded-lg border border-red-400/30 bg-red-950/40 px-4 py-3 text-sm leading-relaxed text-red-100"
               >
-                <AlertCircle className="w-4 h-4" />
-                Something went wrong. Please try again or email us directly at eventmanagement.cn@gmail.com
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
+                <span>
+                  Something went wrong. {errorMessage}
+                </span>
               </motion.div>
             )}
 

@@ -25,8 +25,8 @@ export function Hero() {
 
         {/* Heading */}
         <BlurText 
-          text="Turning Your Moments Into Memories" 
-          className="text-6xl md:text-7xl lg:text-[5.5rem] font-heading italic text-white leading-[0.8] max-w-3xl tracking-[-2px] mb-8 drop-shadow-lg"
+          text="Beautiful Events, Effortlessly Planned" 
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-heading italic text-white leading-[0.9] max-w-3xl tracking-normal mb-8 drop-shadow-lg"
         />
 
         {/* Subheading */}
@@ -46,7 +46,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center gap-6"
         >
-          <a href="#services" className="w-full sm:w-auto liquid-glass-strong rounded-full px-8 py-3.5 flex items-center justify-center gap-2 text-white font-medium hover:bg-white/20 transition-colors">
+          <a href="#services" className="w-full sm:w-auto liquid-glass rounded-full px-8 py-3.5 flex items-center justify-center gap-2 text-white font-medium hover:bg-white/15 transition-colors">
             Our Services
             <ArrowUpRight className="w-5 h-5" />
           </a>
