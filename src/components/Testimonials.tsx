@@ -116,17 +116,14 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-24 px-6 lg:px-16 container mx-auto relative overflow-hidden">
       <div className="text-center mb-16 relative z-10">
-        <motion.button
-          type="button"
-          onClick={() => setIsOpen(true)}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="liquid-glass mb-5 inline-flex items-center justify-center gap-3 rounded-full border border-white/25 px-7 py-3 text-4xl font-heading italic text-white shadow-lg transition-colors hover:bg-white/15 md:text-5xl"
+          className="mb-4 text-4xl font-heading italic text-white drop-shadow-md md:text-5xl"
         >
-          Leave a Love Note
-          <Send className="h-5 w-5 md:h-6 md:w-6" />
-        </motion.button>
+          Love Notes
+        </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -160,6 +157,23 @@ export function Testimonials() {
         ))}
       </div>
 
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.2 }}
+        className="relative z-10 mt-12 flex justify-center"
+      >
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="liquid-glass inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-medium text-white shadow-lg transition-colors hover:bg-white/15"
+        >
+          Leave a Love Note
+          <Send className="h-4 w-4" />
+        </button>
+      </motion.div>
+
       <AnimatePresence>
         {isOpen && (
           <>
@@ -180,7 +194,7 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed left-4 right-4 top-8 z-50 max-h-[calc(100vh-4rem)] overflow-y-auto rounded-2xl border border-white/20 bg-slate-950 p-6 shadow-2xl md:left-1/2 md:right-auto md:w-full md:max-w-xl md:-translate-x-1/2"
+              className="fixed left-4 right-4 top-1/2 z-50 max-h-[calc(100vh-4rem)] -translate-y-1/2 overflow-y-auto rounded-2xl border border-white/20 bg-slate-950 p-6 shadow-2xl md:left-1/2 md:right-auto md:w-full md:max-w-xl md:-translate-x-1/2"
             >
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
