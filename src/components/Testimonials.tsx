@@ -186,17 +186,18 @@ export function Testimonials() {
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
             />
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="testimonial-title"
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 24, scale: 0.98 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed left-4 right-4 top-6 z-50 max-h-[calc(100vh-3rem)] overflow-y-auto rounded-2xl border border-white/30 bg-[#314b5f]/50 p-6 shadow-2xl shadow-black/30 backdrop-blur-2xl md:left-1/2 md:right-auto md:top-1/2 md:w-full md:max-w-xl md:-translate-x-1/2 md:-translate-y-1/2"
-            >
-              <div className="mb-6 flex items-start justify-between gap-4">
+            <div className="fixed inset-x-4 top-6 z-50 md:inset-0 md:grid md:place-items-center md:p-8">
+              <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="testimonial-title"
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 24, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="max-h-[calc(100vh-3rem)] overflow-y-auto rounded-2xl border border-white/30 bg-[#314b5f]/50 p-6 shadow-2xl shadow-black/30 backdrop-blur-2xl md:w-full md:max-w-xl md:max-h-[calc(100vh-4rem)]"
+              >
+                <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
                   <h3 id="testimonial-title" className="font-heading text-3xl italic text-white">Leave a Love Note</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">
@@ -211,9 +212,9 @@ export function Testimonials() {
                 >
                   <X className="h-5 w-5" />
                 </button>
-              </div>
+                </div>
 
-              {formState === 'success' ? (
+                {formState === 'success' ? (
                 <div className="py-10 text-center">
                   <CheckCircle className="mx-auto mb-4 h-14 w-14 text-green-400" />
                   <h4 className="mb-2 font-heading text-2xl italic text-white">Thank you!</h4>
@@ -226,7 +227,7 @@ export function Testimonials() {
                     Close
                   </button>
                 </div>
-              ) : (
+                ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 md:grid-cols-2">
                     <div className="space-y-2">
@@ -321,8 +322,9 @@ export function Testimonials() {
                     )}
                   </button>
                 </form>
-              )}
-            </motion.div>
+                )}
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
