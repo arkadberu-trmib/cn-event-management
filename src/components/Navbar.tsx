@@ -68,7 +68,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.16, ease: "easeOut" }}
-              className="fixed top-20 left-4 right-4 z-40 rounded-2xl border border-white/15 bg-slate-950 p-5 shadow-2xl md:hidden"
+              className="fixed top-20 left-4 right-4 z-40 rounded-2xl border border-white/20 bg-[#314b5f]/95 p-5 shadow-2xl backdrop-blur-xl md:hidden"
             >
               <ul className="mb-5 divide-y divide-white/10">
                 {navItems.map((item) => (
