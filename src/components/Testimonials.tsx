@@ -66,14 +66,14 @@ export function Testimonials() {
     setErrorMessage('');
 
     const fullMessage = [
-      'New testimonial submission',
+      'New love note submission',
       '',
       `Name: ${form.name}`,
       `Email: ${form.email}`,
       `Event: ${form.event || 'Not specified'}`,
       `Permission to feature publicly: ${form.permission ? 'Yes' : 'No'}`,
       '',
-      'Testimonial:',
+      'Love Note:',
       form.message,
     ].join('\n');
 
@@ -90,9 +90,9 @@ export function Testimonials() {
           from_name: form.name,
           from_email: form.email,
           reply_to: form.email,
-          event_type: 'testimonial',
+          event_type: 'love note',
           event_date: form.event || 'Not specified',
-          subject: `New testimonial from ${form.name}`,
+          subject: `New love note from ${form.name}`,
           message: fullMessage,
         },
         { publicKey: PUBLIC_KEY }
@@ -179,7 +179,7 @@ export function Testimonials() {
           <>
             <motion.button
               type="button"
-              aria-label="Close testimonial form"
+              aria-label="Close love note form"
               onClick={closeForm}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -198,7 +198,7 @@ export function Testimonials() {
             >
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
-                  <h3 id="testimonial-title" className="font-heading text-3xl italic text-white">Leave a Testimonial</h3>
+                  <h3 id="testimonial-title" className="font-heading text-3xl italic text-white">Leave a Love Note</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">
                     Share a note about your experience with C&N Event Management.
                   </p>
@@ -207,7 +207,7 @@ export function Testimonials() {
                   type="button"
                   onClick={closeForm}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
-                  aria-label="Close testimonial form"
+                  aria-label="Close love note form"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -217,7 +217,7 @@ export function Testimonials() {
                 <div className="py-10 text-center">
                   <CheckCircle className="mx-auto mb-4 h-14 w-14 text-green-400" />
                   <h4 className="mb-2 font-heading text-2xl italic text-white">Thank you!</h4>
-                  <p className="mb-8 text-white/70">Your testimonial has been sent.</p>
+                  <p className="mb-8 text-white/70">Your love note has been sent.</p>
                   <button
                     type="button"
                     onClick={closeForm}
@@ -271,7 +271,7 @@ export function Testimonials() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="testimonial-message" className="text-sm font-medium text-white/90">Your Testimonial *</label>
+                    <label htmlFor="testimonial-message" className="text-sm font-medium text-white/90">Your Note *</label>
                     <textarea
                       id="testimonial-message"
                       name="message"
@@ -293,7 +293,7 @@ export function Testimonials() {
                       onChange={handleChange}
                       className="mt-1 h-4 w-4 rounded border-white/30 bg-transparent accent-primary"
                     />
-                    C&N Event Management may feature this testimonial on the website or social media.
+                    C&N Event Management may feature this note on the website or social media.
                   </label>
 
                   {formState === 'error' && (
@@ -315,7 +315,7 @@ export function Testimonials() {
                       </>
                     ) : (
                       <>
-                        Send Testimonial
+                        Send Note
                         <Send className="h-4 w-4" />
                       </>
                     )}
