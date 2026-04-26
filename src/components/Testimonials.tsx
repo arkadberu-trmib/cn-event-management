@@ -143,7 +143,7 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.15, duration: 0.6 }}
-            className="relative rounded-2xl border border-white/20 bg-[#314b5f]/45 p-10 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-[#314b5f]/55 hover:shadow-2xl"
+            className="relative rounded-2xl border border-white/20 bg-[#314b5f]/20 p-10 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl"
           >
             <div className="absolute -top-4 -left-2 text-white/20 text-6xl font-heading leading-none font-serif">"</div>
             <p className="text-white/90 text-lg leading-relaxed relative z-10 mb-8 italic drop-shadow-sm">
