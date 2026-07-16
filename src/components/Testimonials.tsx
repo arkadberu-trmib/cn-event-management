@@ -1,6 +1,6 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AlertCircle, CheckCircle, Loader2, Send, X } from 'lucide-react';
+import { AlertCircle, ArrowUpRight, CheckCircle, ChevronLeft, ChevronRight, Loader2, Send, X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -9,6 +9,12 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const TO_EMAIL = 'eventmanagement.cn@gmail.com';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
+type Testimonial = {
+  excerpt: string;
+  fullNote: string;
+  author: string;
+  event: string;
+};
 
 const isEmailJsConfigured =
   SERVICE_ID &&
@@ -18,8 +24,39 @@ const isEmailJsConfigured =
   TEMPLATE_ID !== 'your_template_id' &&
   PUBLIC_KEY !== 'your_public_key';
 
+const testimonials: Testimonial[] = [
+  {
+    excerpt: "From keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful and truly unforgettable.",
+    fullNote: "Thank you for being such an incredible part of our day!\n\nFrom keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful & truly unforgettable. Thank you for being there during my momentary freak outs! Thank you for caring about our day like its your own. Your support, kindness and dedication meant more to us than words can express. We love you!!",
+    author: "Arianne T",
+    event: "Wedding"
+  },
+  {
+    excerpt: "From day-of coordination, to emceeing, to the decor setup, every detail was executed flawlessly. We were able to be fully present and enjoy every moment.",
+    fullNote: "Our wedding day was absolutely perfect, and we owe so much of that to this incredible team. From day-of coordination, to emceeing, to the decor setup, every detail was executed flawlessly.\n\nThey took the time to truly listen to our vision, understand what was important to us, and then somehow exceeded every expectation we had. Not only did they bring our ideas to life, but they also added their own creative touches that elevated everything beyond what we could have imagined.\n\nThroughout the entire process, they were professional, organized, attentive, and genuinely invested in making our day special. On the wedding day itself, we were able to be fully present and enjoy every moment because we knew everything was in capable hands. Any stress or concerns we had simply disappeared as they seamlessly managed every detail behind the scenes.\n\nOur guests continuously commented on how beautiful everything looked, how smoothly the event flowed, and how warm and engaging the atmosphere felt. Their dedication, hard work, and passion were evident in every aspect of the celebration.\n\nWe are incredibly grateful for everything they did to make our wedding unforgettable. If you're looking for a team that is reliable, talented, creative, and truly cares about making your vision come to life, we cannot recommend them highly enough. Thank you for helping create memories that we will cherish for the rest of our lives!!",
+    author: "Maeann & Jonathan",
+    event: "Wedding"
+  },
+  {
+    excerpt: "C&N was easy to communicate with and very understanding of what we wanted. They listened to our vision and requests carefully.",
+    fullNote: "C&N was easy to communicate with and very understanding of what we wanted. They listened to our vision and requests carefully, and the overall experience was great from start to finish!",
+    author: "Francesca & Jon",
+    event: "Baby Shower"
+  },
+  {
+    excerpt: "Because of Nina and Char, my husband and I were able to fully enjoy and be present in every moment of our wedding without any worries.",
+    fullNote: "From the moment we hired CN Event Management, Nina was with us every step of the way. She made sure every detail was thoughtfully planned and covered before our big day, especially when we incorporated Filipino traditions into our wedding. We truly appreciated their guidance, expertise, and attention to cultural details throughout the process.\n\nBecause of Nina and Char, my husband and I were able to fully enjoy and be present in every moment of our wedding without any worries. They are incredibly organized, proactive, and excellent problem-solvers. We're so grateful for all their hard work and would absolutely love to work with them again in the future!",
+    author: "Matthew and Camille",
+    event: "Wedding"
+  }
+];
+
 export function Testimonials() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [carouselDirection, setCarouselDirection] = useState<'left' | 'right'>('right');
   const [formState, setFormState] = useState<FormState>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [form, setForm] = useState({
@@ -30,34 +67,45 @@ export function Testimonials() {
     permission: false,
   });
 
-  const testimonials = [
-    {
-      quote: "From keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful and truly unforgettable.",
-      author: "Arianne T",
-      event: "Wedding"
-    },
-    {
-      quote: "From day-of coordination, to emceeing, to the decor setup, every detail was executed flawlessly. We were able to be fully present and enjoy every moment.",
-      author: "Maeann & Jonathan",
-      event: "Wedding"
-    },
-    {
-      quote: "C&N was easy to communicate with and very understanding of what we wanted. They listened to our vision and requests carefully.",
-      author: "Francesca & Jon",
-      event: "Baby Shower"
-    },
-    {
-      quote: "Because of Nina and Char, my husband and I were able to fully enjoy and be present in every moment of our wedding without any worries.",
-      author: "Matthew and Camille",
-      event: "Wedding"
-    }
-  ];
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth >= 1280) {
+        setVisibleCount(3);
+      } else if (window.innerWidth >= 768) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(1);
+      }
+    };
+
+    updateVisibleCount();
+    window.addEventListener('resize', updateVisibleCount);
+
+    return () => window.removeEventListener('resize', updateVisibleCount);
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex(prev => Math.min(prev, Math.max(testimonials.length - visibleCount, 0)));
+  }, [visibleCount]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, type, value } = e.target;
     const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
+
+  const rotateTestimonials = (direction: 'left' | 'right') => {
+    const maxIndex = Math.max(testimonials.length - visibleCount, 0);
+
+    setCarouselDirection(direction);
+    setActiveIndex(prev => {
+      if (maxIndex === 0) return 0;
+      if (direction === 'left') return prev === 0 ? maxIndex : prev - 1;
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  };
+
+  const visibleTestimonials = testimonials.slice(activeIndex, activeIndex + visibleCount);
 
   const closeForm = () => {
     setIsOpen(false);
@@ -140,27 +188,68 @@ export function Testimonials() {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 relative z-10 md:grid-cols-2 xl:grid-cols-4">
-        {testimonials.map((testimonial, i) => (
-          <motion.div
+      <div className="relative z-10 mb-6 flex justify-center gap-3 md:justify-end">
+        <button
+          type="button"
+          onClick={() => rotateTestimonials('left')}
+          aria-label="Previous love notes"
+          title="Previous love notes"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white shadow-lg backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          onClick={() => rotateTestimonials('right')}
+          aria-label="Next love notes"
+          title="Next love notes"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white shadow-lg backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={`${activeIndex}-${visibleCount}`}
+          initial={{ opacity: 0, x: carouselDirection === 'right' ? 28 : -28 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: carouselDirection === 'right' ? -28 : 28 }}
+          transition={{ duration: 0.24, ease: "easeOut" }}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+        {visibleTestimonials.map((testimonial) => (
+          <article
             key={testimonial.author}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: i * 0.15, duration: 0.6 }}
-            className="relative flex h-full flex-col rounded-2xl border border-white/20 bg-[#314b5f]/20 p-8 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl lg:p-10"
+            className="group relative flex min-h-[390px] flex-col rounded-2xl border border-white/20 bg-[#314b5f]/20 p-8 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl lg:p-10"
           >
             <div className="absolute -top-4 -left-2 text-white/20 text-6xl font-heading leading-none font-serif">"</div>
-            <p className="text-white/90 text-lg leading-relaxed relative z-10 mb-8 italic drop-shadow-sm">
-              {testimonial.quote}
-            </p>
+            <div className="relative z-10 mb-8 min-h-[190px]">
+              <p className="text-white/90 text-lg leading-relaxed italic drop-shadow-sm">
+                {testimonial.excerpt}
+              </p>
+              <div className="absolute inset-0 hidden rounded-xl border border-white/20 bg-[#23394b]/95 p-4 opacity-0 shadow-2xl shadow-black/20 backdrop-blur-2xl transition-opacity duration-300 group-hover:opacity-100 md:block">
+                <p className="hide-scrollbar h-full overflow-y-auto pr-1 text-sm leading-relaxed text-white/90 whitespace-pre-line">
+                  {testimonial.fullNote}
+                </p>
+              </div>
+            </div>
             <div className="mt-auto">
               <p className="font-heading text-xl text-white drop-shadow-sm">{testimonial.author}</p>
               <p className="text-white/70 text-sm font-medium tracking-wide uppercase mt-1">{testimonial.event}</p>
+              <button
+                type="button"
+                onClick={() => setSelectedTestimonial(testimonial)}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition-colors hover:text-white"
+              >
+                Read full note
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
             </div>
-          </motion.div>
+          </article>
         ))}
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -180,6 +269,54 @@ export function Testimonials() {
       </motion.div>
 
       <AnimatePresence>
+        {selectedTestimonial && (
+          <>
+            <motion.button
+              type="button"
+              aria-label="Close full love note"
+              onClick={() => setSelectedTestimonial(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+            />
+            <div className="fixed inset-x-4 top-6 z-[60] md:inset-0 md:grid md:place-items-center md:p-8">
+              <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="full-love-note-title"
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 24, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="max-h-[calc(100vh-3rem)] overflow-y-auto rounded-2xl border border-white/30 bg-[#314b5f]/70 p-6 shadow-2xl shadow-black/30 backdrop-blur-2xl md:w-full md:max-w-2xl md:max-h-[calc(100vh-4rem)] md:p-8"
+              >
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                      {selectedTestimonial.event}
+                    </p>
+                    <h3 id="full-love-note-title" className="font-heading text-3xl italic text-white md:text-4xl">
+                      {selectedTestimonial.author}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedTestimonial(null)}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
+                    aria-label="Close full love note"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
+                <p className="whitespace-pre-line text-base leading-relaxed text-white/85 md:text-lg">
+                  {selectedTestimonial.fullNote}
+                </p>
+              </motion.div>
+            </div>
+          </>
+        )}
+
         {isOpen && (
           <>
             <motion.button
