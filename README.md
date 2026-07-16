@@ -1,16 +1,30 @@
-# React + Vite
+# C&N Event Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website code for C&N Event Management. This project is a React + Vite app and is connected directly to GitHub at:
 
-Currently, two official plugins are available:
+https://github.com/arkadberu-trmib/cn-event-management
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Local workflow
 
-## React Compiler
+Use these commands from this folder:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```powershell
+git pull --ff-only origin main
+npm run dev
+npm run build
+git status
+git add .
+git commit -m "Describe the update"
+git push origin main
+```
 
-## Expanding the ESLint configuration
+The npm scripts call Vite and ESLint through `node` so they work even though the parent Desktop folder contains `&`, which can confuse Windows command shims.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Available scripts
+
+```powershell
+npm run dev
+npm run build
+npm run lint
+npm run preview
+```
