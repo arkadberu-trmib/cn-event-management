@@ -32,19 +32,24 @@ export function Testimonials() {
 
   const testimonials = [
     {
-      quote: "Nina and Char turned our dream wedding into a breathtaking reality. Every detail was executed with such elegance — truly beyond what we imagined.",
-      author: "Sarah & Mike",
-      event: "Rustic Modern Wedding"
+      quote: "From keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful and truly unforgettable.",
+      author: "Arianne T",
+      event: "Wedding"
     },
     {
-      quote: "Absolutely phenomenal experience. The styling, the seamless coordination, and their calming presence made the day perfect.",
-      author: "Jessica T.",
-      event: "Bridal Shower"
+      quote: "From day-of coordination, to emceeing, to the decor setup, every detail was executed flawlessly. We were able to be fully present and enjoy every moment.",
+      author: "Maeann & Jonathan",
+      event: "Wedding"
     },
     {
-      quote: "I can't recommend C&N enough. They perfectly captured the elegant, intimate vibe we wanted for our milestone celebration.",
-      author: "David L.",
-      event: "50th Anniversary Dinner"
+      quote: "C&N was easy to communicate with and very understanding of what we wanted. They listened to our vision and requests carefully.",
+      author: "Francesca & Jon",
+      event: "Baby Shower"
+    },
+    {
+      quote: "Because of Nina and Char, my husband and I were able to fully enjoy and be present in every moment of our wedding without any worries.",
+      author: "Matthew and Camille",
+      event: "Wedding"
     }
   ];
 
@@ -135,15 +140,15 @@ export function Testimonials() {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+      <div className="grid grid-cols-1 gap-8 relative z-10 md:grid-cols-2 xl:grid-cols-4">
         {testimonials.map((testimonial, i) => (
           <motion.div
-            key={i}
+            key={testimonial.author}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.15, duration: 0.6 }}
-            className="relative rounded-2xl border border-white/20 bg-[#314b5f]/20 p-10 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl"
+            className="relative flex h-full flex-col rounded-2xl border border-white/20 bg-[#314b5f]/20 p-8 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl lg:p-10"
           >
             <div className="absolute -top-4 -left-2 text-white/20 text-6xl font-heading leading-none font-serif">"</div>
             <p className="text-white/90 text-lg leading-relaxed relative z-10 mb-8 italic drop-shadow-sm">
