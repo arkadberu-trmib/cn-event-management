@@ -11,11 +11,18 @@ export function About() {
           transition={{ duration: 0.8 }}
           className="w-full lg:w-1/2 relative rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl border border-white/20"
         >
-          <img 
-            src="/images/about_nina_char_1774166325257.png" 
-            alt="Nina and Char - Founders of C&N Event Management" 
-            className="w-full h-full object-cover"
-          />
+          <picture className="block h-full w-full">
+            <source srcSet="/images/optimized/about-nina-char.webp" type="image/webp" />
+            <img
+              src="/images/optimized/about-nina-char.jpg"
+              alt="Nina and Char - Founders of C&N Event Management"
+              width="1536"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
+          </picture>
         </motion.div>
         
         <div className="w-full lg:w-1/2">
