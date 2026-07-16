@@ -221,18 +221,13 @@ export function Testimonials() {
         {visibleTestimonials.map((testimonial) => (
           <article
             key={testimonial.author}
-            className="group relative flex min-h-[390px] flex-col rounded-2xl border border-white/20 bg-[#314b5f]/20 p-8 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl lg:p-10"
+            className="relative flex min-h-[390px] flex-col rounded-2xl border border-white/20 bg-[#314b5f]/20 p-8 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-[#314b5f]/28 hover:shadow-2xl lg:p-10"
           >
             <div className="absolute -top-4 -left-2 text-white/20 text-6xl font-heading leading-none font-serif">"</div>
             <div className="relative z-10 mb-8 min-h-[190px]">
               <p className="text-white/90 text-lg leading-relaxed italic drop-shadow-sm">
                 {testimonial.excerpt}
               </p>
-              <div className="absolute inset-0 hidden rounded-xl border border-white/20 bg-[#23394b]/95 p-4 opacity-0 shadow-2xl shadow-black/20 backdrop-blur-2xl transition-opacity duration-300 group-hover:opacity-100 md:block">
-                <p className="hide-scrollbar h-full overflow-y-auto pr-1 text-sm leading-relaxed text-white/90 whitespace-pre-line">
-                  {testimonial.fullNote}
-                </p>
-              </div>
             </div>
             <div className="mt-auto">
               <p className="font-heading text-xl text-white drop-shadow-sm">{testimonial.author}</p>
