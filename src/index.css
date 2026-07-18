@@ -9,12 +9,49 @@
     --background: 213 45% 67%;
   }
 
+  html {
+    min-height: 100%;
+    background-color: #182630;
+  }
+
   body {
-    @apply bg-contentBg text-text font-body m-0 p-0 antialiased;
+    @apply text-text font-body m-0 p-0 antialiased;
+    min-height: 100%;
+    background-color: #182630;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    html,
+    body {
+      overscroll-behavior-y: none;
+    }
   }
 }
 
 @layer components {
+  .site-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: #182630;
+  }
+
+  @supports (height: 100lvh) {
+    .site-background {
+      height: 100lvh;
+    }
+  }
+
   .liquid-glass {
     background: rgba(255, 255, 255, 0.01);
     background-blend-mode: luminosity;

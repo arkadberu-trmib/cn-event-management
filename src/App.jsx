@@ -13,9 +13,9 @@ function App() {
   const facebookUrl = 'https://www.facebook.com/share/1CppSJWD8E/?mibextid=wwXIfr';
 
   return (
-    <div className="font-body text-white relative min-h-screen overflow-x-hidden">
+    <div className="relative isolate min-h-screen overflow-x-hidden font-body text-white">
       {/* Global Fixed Video Background */}
-      <div className="fixed inset-0 z-[-10]">
+      <div className="site-background" aria-hidden="true">
         <video
           autoPlay
           loop
