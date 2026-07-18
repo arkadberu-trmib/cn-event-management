@@ -28,7 +28,7 @@ const testimonials: Testimonial[] = [
   {
     excerpt: "From keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful and truly unforgettable.",
     fullNote: "Thank you for being such an incredible part of our day!\n\nFrom keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful & truly unforgettable. Thank you for being there during my momentary freak outs! Thank you for caring about our day like its your own. Your support, kindness and dedication meant more to us than words can express. We love you!!",
-    author: "Arianne T",
+    author: "Arianne & Kevin",
     event: "Wedding"
   },
   {

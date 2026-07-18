@@ -15,7 +15,7 @@ export function Services() {
     {
       title: "Emcee",
       description: "A confident, engaging host to guide your event from start to finish — keeping your guests entertained and your program running seamlessly.",
-      price: "Starting at $500"
+      price: "Starting at $650"
     }
   ];
 
