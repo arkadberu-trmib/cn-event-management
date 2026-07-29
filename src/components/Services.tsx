@@ -5,12 +5,12 @@ export function Services() {
     {
       title: "Partial Planning Services",
       description: "From concept to execution, we handle every detail so you can enjoy your day stress-free.",
-      price: "Starting at $1,200"
+      price: "Starting at $1,500"
     },
     {
       title: "Month-Of Coordination",
       description: "You planned the details, we ensure your vision comes to life flawlessly on the big day.",
-      price: "Starting at $800"
+      price: "Starting at $1,000"
     },
     {
       title: "Emcee",
