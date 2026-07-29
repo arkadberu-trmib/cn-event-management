@@ -19,7 +19,7 @@ export function Hero() {
             New
           </span>
           <span className="text-white/90 text-sm font-medium font-body">
-            Now Booking 2027/2028
+            Now Booking 2027 / 2028
           </span>
         </motion.div>
 
