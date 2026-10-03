@@ -3,19 +3,29 @@ import { motion } from 'framer-motion';
 export function Services() {
   const services = [
     {
-      title: "Partial Planning Services",
+      title: "Full Wedding Planning",
       description: "From concept to execution, we handle every detail so you can enjoy your day stress-free.",
+      price: "Starting at $2,500"
+    },
+    {
+      title: "Partial Planning & Coordination",
+      description: "You have a few vendors selected and some details underway. We step in to complete the plan and bring it all together.",
       price: "Starting at $1,500"
     },
     {
-      title: "Month-Of Coordination",
+      title: "Day-of Coordination",
       description: "You planned the details, we ensure your vision comes to life flawlessly on the big day.",
       price: "Starting at $1,000"
     },
     {
-      title: "Emcee",
+      title: "Wedding Emcee",
       description: "A confident, engaging host to guide your event from start to finish — keeping your guests entertained and your program running seamlessly.",
-      price: "Starting at $650"
+      price: "Starting at $600"
+    },
+    {
+      title: "Decor Setup Add-On",
+      description: "Share your decor plan and instructions, and we'll handle the setup so you can be fully present and enjoy the day.",
+      price: "Starting at $300"
     }
   ];
 
@@ -41,7 +51,7 @@ export function Services() {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-6">
         {services.map((service, i) => (
           <motion.div
             key={i}
@@ -49,7 +59,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.1, duration: 0.6 }}
-            className="liquid-glass rounded-xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-white/20 flex flex-col h-full"
+            className={`liquid-glass flex h-full flex-col rounded-xl border border-white/20 p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl xl:col-span-2 ${i === 3 ? 'xl:col-start-2' : ''}`}
           >
             <h3 className="text-2xl font-heading text-white mb-3">{service.title}</h3>
             <p className="text-white/70 mb-6 flex-grow leading-relaxed">

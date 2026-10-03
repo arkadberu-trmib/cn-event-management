@@ -195,7 +195,7 @@ export function Contact() {
                   value={form.date}
                   onChange={handleChange}
                   className="w-full bg-black/20 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-white/50 focus:ring-1 focus:ring-white/50 transition-colors"
-                  placeholder="Fall 2026"
+                  placeholder="Fall 2027"
                 />
               </div>
             </div>

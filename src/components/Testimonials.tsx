@@ -26,6 +26,30 @@ const isEmailJsConfigured =
 
 const testimonials: Testimonial[] = [
   {
+    excerpt: "From the planning stage until the end of the celebration, everything was organized and stress-free because of your hard work.",
+    fullNote: "Thank you both so much for making our wedding so special! ❤️ From the planning stage until the end of the celebration, everything was organized and stress-free because of your hard work.\n\nOur coordinator made sure everything ran smoothly, and our emcee kept the program fun, lively, and engaging. You both made us and our guests feel comfortable and truly enjoy every moment.\n\nWe couldn't have asked for a better team. Thank you for your professionalism, kindness, and dedication. We highly recommend you to any couple looking for an amazing wedding coordinator and emcee! 🥰",
+    author: "Carla & Fritz",
+    event: "Wedding"
+  },
+  {
+    excerpt: "They made the event so incredible. So professional and such wonderful personalities. I strongly recommend them for any event.",
+    fullNote: "Thank you so much to the sister duo and tandem! Host Char as MC and Nina as my coordinator. They were an absolute pleasure planning and attending my wedding. They made the event so incredible! So professional and such wonderful personalities. I strongly recommend them for any event. Thank you both for making my day so special. Fantastic job!",
+    author: "Joy & Mike",
+    event: "Wedding"
+  },
+  {
+    excerpt: "From start to finish, they were so on top of things and kept me relaxed and stress-free. You cannot go wrong with hiring the C&N Events team!",
+    fullNote: "Nina and Noel were absolutely amazing. If there were any problems at my wedding, I didn't know about them. From start to finish, they were just so on top of things and kept me relaxed and stress-free. You cannot go wrong with hiring the C&N Events team!",
+    author: "Erica He",
+    event: "Wedding"
+  },
+  {
+    excerpt: "Their presence brought us so much peace of mind, and everything they did behind the scenes made our day feel seamless, organized, and stress-free.",
+    fullNote: "We couldn't have had a better experience with Nina and Char, and the entire C&N management team in helping make our wedding day so special! Their support, guidance, and hard work throughout this entire process meant more to us than we could ever properly put into words. Even with some hiccups leading up to our big day, they remained professional, flexible, and catered to all our needs. Their presence brought us so much peace of mind, and everything they did behind the scenes helped make our day feel seamless, organized, and stress-free for us and our families.\n\nBecause of them, we were able to truly be present and enjoy every moment without worrying about everything happening around us. And a huge thank you for helping bring our vision to life so beautifully. We truly could not have done it without them. To anyone looking for a wedding coordinator you can trust, we highly recommend them!",
+    author: "Sidney & Levi",
+    event: "Wedding"
+  },
+  {
     excerpt: "From keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful and truly unforgettable.",
     fullNote: "Thank you for being such an incredible part of our day!\n\nFrom keeping things organized to bringing warmth, energy and laughter to our day, you both made the day feel joyful & truly unforgettable. Thank you for being there during my momentary freak outs! Thank you for caring about our day like its your own. Your support, kindness and dedication meant more to us than words can express. We love you!!",
     author: "Arianne & Kevin",
@@ -46,7 +70,7 @@ const testimonials: Testimonial[] = [
   {
     excerpt: "Because of Nina and Char, my husband and I were able to fully enjoy and be present in every moment of our wedding without any worries.",
     fullNote: "From the moment we hired CN Event Management, Nina was with us every step of the way. She made sure every detail was thoughtfully planned and covered before our big day, especially when we incorporated Filipino traditions into our wedding. We truly appreciated their guidance, expertise, and attention to cultural details throughout the process.\n\nBecause of Nina and Char, my husband and I were able to fully enjoy and be present in every moment of our wedding without any worries. They are incredibly organized, proactive, and excellent problem-solvers. We're so grateful for all their hard work and would absolutely love to work with them again in the future!",
-    author: "Matthew and Camille",
+    author: "Matthew & Camille",
     event: "Wedding"
   }
 ];
