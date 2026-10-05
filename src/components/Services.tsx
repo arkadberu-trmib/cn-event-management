@@ -10,7 +10,7 @@ export function Services() {
     {
       title: "Partial Planning & Coordination",
       description: "You have a few vendors selected and some details underway. We step in to complete the plan and bring it all together.",
-      price: "Starting at $1,500"
+      price: "Starting at $1,800"
     },
     {
       title: "Day-of Coordination",
